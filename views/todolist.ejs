@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App JavaScript</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <form action="/" method="post">
+        <header><%= title %></header>
+        <div class="inputField">
+          <input
+            type="text"
+            name="cinpdata"
+            value=""
+            placeholder="Add your new todo"
+          />
+          <button type="submit" name="addtodo" value="<%= title %>">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+      </form>
+
+      <form action="/delete" method="post">
+        <input type="hidden" name="delitemtitle" value="<%= title %>" />
+        <ul class="todoList">
+          <% getData.forEach((list)=>{ %>
+          <li>
+            <input
+              type="checkbox"
+              value="<%=list._id%>"
+              name="items[]"
+              onchange="this.form.submit()"
+            /><%=list.name%>
+          </li>
+          <% }); %>
+          <!-- data are comes from local storage -->
+        </ul>
+        <div class="footer">
+          <span>You have <span class="pendingTasks"></span> pending tasks</span>
+          <button type="submit" name="cleardata">Clear All</button>
+        </div>
+      </form>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
