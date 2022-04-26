@@ -20,6 +20,7 @@ const todoSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
+
 function todoScehma() {
   const Todotable = mongoose.model("todotab", todoSchema);
   return Todotable;
